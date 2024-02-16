@@ -6,6 +6,8 @@ package com.project2.taskmaster;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -85,6 +87,19 @@ public class Signup extends javax.swing.JPanel {
         jLabel2.setText("create your account");
 
         signupBtn.setText("sign up");
+        signupBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                signupBtn.setForeground(Color.CYAN);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                signupBtn.setForeground(Color.WHITE);
+            }
+        });
         signupBtn.addActionListener(e -> {
             usrname = usernameField.getText();
             passwrd = passwordField.getText();
@@ -96,11 +111,20 @@ public class Signup extends javax.swing.JPanel {
         });
 
         exitBtn.setText("exit");
-        exitBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitBtnActionPerformed(evt);
+        exitBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                exitBtn.setForeground(Color.CYAN);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                exitBtn.setForeground(Color.WHITE);
             }
         });
+        exitBtn.addActionListener(this::exitBtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -152,11 +176,7 @@ public class Signup extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveUserandPass(String savedUsrName, String savedPassWord) {
-        try (FileWriter writer = new FileWriter("userSaved.txt")) {
-            writer.write(savedUsrName + savedPassWord);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed

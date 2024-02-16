@@ -5,6 +5,8 @@
 package com.project2.taskmaster;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,7 +16,7 @@ import java.io.PrintWriter;
  *
  * @author user85
  */
-public class Homepage extends javax.swing.JPanel {
+public class Homepage extends javax.swing.JPanel implements ActionListener {
 
     MainFrame frame;
     /**
@@ -33,31 +35,49 @@ public class Homepage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        profilePanel = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        mainTabbedPane = new javax.swing.JTabbedPane();
+        
+        homePanel = new javax.swing.JPanel();
         addTaskButton = new javax.swing.JButton();
+        addTaskButton.addActionListener(this);
         viewTasksButton = new javax.swing.JButton();
+        viewTasksButton.addActionListener(this);
         seeProfileButton = new javax.swing.JButton();
+        seeProfileButton.addActionListener(this);
         exitButton = new javax.swing.JButton();
+        exitButton.addActionListener(this);
         logoutBtn = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        logoutBtn.addActionListener(this);
+
+        addTaskPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         saveTaskBtn = new javax.swing.JButton();
+        saveTaskBtn.addActionListener(this);
         deltaskBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        deltaskBtn.addActionListener(this);
+        addTaskgoHome = new javax.swing.JButton();
+        addTaskTextArea = new javax.swing.JTextArea();
+        addTaskgoHome.addActionListener(this);
+        addTasksLogoutBtn = new javax.swing.JButton();
+        addTasksLogoutBtn.addActionListener(this);
+        addTasksExitBtn = new javax.swing.JButton();
+        addTasksExitBtn.addActionListener(this);
+        addTaskViewTasksBtn = new javax.swing.JButton();
+        addTaskViewTasksBtn.addActionListener(this);
+        
+        viewTasksPane = new javax.swing.JPanel();
         task1Lbl = new javax.swing.JLabel();
         task2Lbl = new javax.swing.JLabel();
         task3Lbl = new javax.swing.JLabel();
         task4Lbl = new javax.swing.JLabel();
-        markDoneBtn = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        viewTasksAddTaskBtn = new javax.swing.JButton();
+        viewTasksAddTaskBtn.addActionListener(this);
+        viewTasksExitBtn = new javax.swing.JButton();
+        viewTasksExitBtn.addActionListener(this);
+        viewTasksLogoutBtn = new javax.swing.JButton();
+        viewTasksLogoutBtn.addActionListener(this);
+        viewTasksgoHomeBtn = new javax.swing.JButton();
+        viewTasksgoHomeBtn.addActionListener(this);
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
@@ -66,9 +86,12 @@ public class Homepage extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        profilePaneExitBtn = new javax.swing.JButton();
+        profilePaneExitBtn.addActionListener(this);
+        profilePaneLogoutBtn = new javax.swing.JButton();
+        profilePaneLogoutBtn.addActionListener(this);
+        profilePanegoHomeBtn = new javax.swing.JButton();
+        profilePanegoHomeBtn.addActionListener(this);
 
         addTaskButton.setText("Add Task");
         addTaskButton.addActionListener(new java.awt.event.ActionListener() {
@@ -90,27 +113,27 @@ public class Homepage extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
+        homePanel.setLayout(homePanelLayout);
+        homePanelLayout.setHorizontalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutBtn)
                 .addGap(60, 60, 60)
                 .addComponent(exitButton)
                 .addGap(105, 105, 105))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(homePanelLayout.createSequentialGroup()
                 .addGap(72, 72, 72)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(seeProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                     .addComponent(viewTasksButton, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                     .addComponent(addTaskButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(629, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        homePanelLayout.setVerticalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePanelLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(addTaskButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
@@ -118,17 +141,17 @@ public class Homepage extends javax.swing.JPanel {
                 .addGap(54, 54, 54)
                 .addComponent(seeProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
-        profilePanel.addTab("Home", jPanel1);
+        mainTabbedPane.addTab("Home", homePanel);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        addTaskTextArea.setColumns(20);
+        addTaskTextArea.setRows(5);
+        jScrollPane1.setViewportView(addTaskTextArea);
 
         saveTaskBtn.setText("save Task");
         saveTaskBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -139,68 +162,68 @@ public class Homepage extends javax.swing.JPanel {
 
         deltaskBtn.setText("delete Task");
 
-        jButton1.setText("home");
+        addTaskgoHome.setText("home");
 
-        jButton8.setText("logout");
+        addTasksLogoutBtn.setText("logout");
 
-        jButton9.setText("exit");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        addTasksExitBtn.setText("exit");
+        addTasksExitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                addTasksExitBtnActionPerformed(evt);
             }
         });
 
-        jButton10.setText("view Tasks");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        addTaskViewTasksBtn.setText("view Tasks");
+        addTaskViewTasksBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                addTaskViewTasksBtnActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout addTaskPanelLayout = new javax.swing.GroupLayout(addTaskPanel);
+        addTaskPanel.setLayout(addTaskPanelLayout);
+        addTaskPanelLayout.setHorizontalGroup(
+            addTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addTaskPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addTaskPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(addTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(addTaskPanelLayout.createSequentialGroup()
+                        .addComponent(addTaskgoHome, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(saveTaskBtn)
                         .addGap(48, 48, 48)
                         .addComponent(deltaskBtn))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton10)
+                    .addGroup(addTaskPanelLayout.createSequentialGroup()
+                        .addComponent(addTaskViewTasksBtn)
                         .addGap(34, 34, 34)
-                        .addComponent(jButton8)
+                        .addComponent(addTasksLogoutBtn)
                         .addGap(33, 33, 33)
-                        .addComponent(jButton9)))
+                        .addComponent(addTasksExitBtn)))
                 .addGap(90, 90, 90))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        addTaskPanelLayout.setVerticalGroup(
+            addTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addTaskPanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(addTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveTaskBtn)
                     .addComponent(deltaskBtn)
-                    .addComponent(jButton1))
+                    .addComponent(addTaskgoHome))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10))
+                .addGroup(addTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addTasksLogoutBtn)
+                    .addComponent(addTasksExitBtn)
+                    .addComponent(addTaskViewTasksBtn))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        profilePanel.addTab("Add Task", jPanel2);
+        mainTabbedPane.addTab("Add Task", addTaskPanel);
 
         task1Lbl.setText("Task 1 ");
 
@@ -210,13 +233,13 @@ public class Homepage extends javax.swing.JPanel {
 
         task4Lbl.setText("Task 4");
 
-        markDoneBtn.setText("Add Task");
+        viewTasksAddTaskBtn.setText("Add Task");
 
-        jButton5.setText("exit");
+        viewTasksExitBtn.setText("exit");
 
-        jButton6.setText("logout");
+        viewTasksLogoutBtn.setText("logout");
 
-        jButton7.setText("home");
+        viewTasksgoHomeBtn.setText("home");
 
         jCheckBox1.setText("done");
 
@@ -231,69 +254,69 @@ public class Homepage extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout viewTasksPaneLayout = new javax.swing.GroupLayout(viewTasksPane);
+        viewTasksPane.setLayout(viewTasksPaneLayout);
+        viewTasksPaneLayout.setHorizontalGroup(
+            viewTasksPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewTasksPaneLayout.createSequentialGroup()
                 .addGap(0, 490, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(viewTasksgoHomeBtn)
                 .addGap(35, 35, 35)
-                .addComponent(jButton6)
+                .addComponent(viewTasksLogoutBtn)
                 .addGap(50, 50, 50)
-                .addComponent(jButton5)
+                .addComponent(viewTasksExitBtn)
                 .addGap(44, 44, 44))
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(viewTasksPaneLayout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(markDoneBtn)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(viewTasksPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(viewTasksAddTaskBtn)
+                    .addGroup(viewTasksPaneLayout.createSequentialGroup()
+                        .addGroup(viewTasksPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(task1Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                             .addComponent(task2Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(task3Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(task4Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(viewTasksPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox4)
                             .addComponent(jCheckBox3)
                             .addComponent(jCheckBox5)
                             .addComponent(jCheckBox1))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        viewTasksPaneLayout.setVerticalGroup(
+            viewTasksPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewTasksPaneLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(viewTasksPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(task1Lbl)
                     .addComponent(jCheckBox1))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(viewTasksPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewTasksPaneLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(task2Lbl))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewTasksPaneLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jCheckBox4)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(viewTasksPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(task3Lbl)
                     .addComponent(jCheckBox3))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(viewTasksPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(task4Lbl)
                     .addComponent(jCheckBox5))
                 .addGap(83, 83, 83)
-                .addComponent(markDoneBtn)
+                .addComponent(viewTasksAddTaskBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                .addGroup(viewTasksPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewTasksExitBtn)
+                    .addComponent(viewTasksLogoutBtn)
+                    .addComponent(viewTasksgoHomeBtn))
                 .addGap(40, 40, 40))
         );
 
-        profilePanel.addTab("View Task", jPanel3);
+        mainTabbedPane.addTab("View Task", viewTasksPane);
 
         jLabel1.setText("username");
 
@@ -301,19 +324,19 @@ public class Homepage extends javax.swing.JPanel {
 
         jLabel3.setText("email");
 
-        jButton2.setText("exit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        profilePaneExitBtn.setText("exit");
+        profilePaneExitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                profilePaneExitBtnActionPerformed(evt);
             }
         });
 
-        jButton3.setText("logout");
+        profilePaneLogoutBtn.setText("logout");
 
-        jButton4.setText("home");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        profilePanegoHomeBtn.setText("home");
+        profilePanegoHomeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                profilePanegoHomeBtnActionPerformed(evt);
             }
         });
 
@@ -331,11 +354,11 @@ public class Homepage extends javax.swing.JPanel {
                 .addContainerGap(540, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(profilePanegoHomeBtn)
                 .addGap(29, 29, 29)
-                .addComponent(jButton3)
+                .addComponent(profilePaneLogoutBtn)
                 .addGap(34, 34, 34)
-                .addComponent(jButton2)
+                .addComponent(profilePaneExitBtn)
                 .addGap(97, 97, 97))
         );
         jPanel4Layout.setVerticalGroup(
@@ -349,13 +372,13 @@ public class Homepage extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(profilePaneExitBtn)
+                    .addComponent(profilePaneLogoutBtn)
+                    .addComponent(profilePanegoHomeBtn))
                 .addGap(64, 64, 64))
         );
 
-        profilePanel.addTab("Profile", jPanel4);
+        mainTabbedPane.addTab("Profile", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -363,14 +386,14 @@ public class Homepage extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(profilePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mainTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(profilePanel))
+                .addComponent(mainTabbedPane))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -380,10 +403,10 @@ public class Homepage extends javax.swing.JPanel {
         if (result == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
-                writer.println(jTextArea1.getText());
+                writer.println(addTaskTextArea.getText());
                 JOptionPane.showMessageDialog(frame, "Data saved to file: " + file.getAbsolutePath());
             } catch (IOException ex) {
-                ex.printStackTrace();
+                System.out.println(ex.getMessage());
             }
         }
     }//GEN-LAST:event_saveTaskBtnActionPerformed
@@ -396,21 +419,21 @@ public class Homepage extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_logoutBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void profilePaneExitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilePaneExitBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_profilePaneExitBtnActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void profilePanegoHomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilePanegoHomeBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_profilePanegoHomeBtnActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void addTasksExitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTasksExitBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_addTasksExitBtnActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void addTaskViewTasksBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTaskViewTasksBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_addTaskViewTasksBtnActionPerformed
 
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
         // TODO add your handling code here:
@@ -421,16 +444,16 @@ public class Homepage extends javax.swing.JPanel {
     private javax.swing.JButton addTaskButton;
     private javax.swing.JButton deltaskBtn;
     private javax.swing.JButton exitButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton addTaskgoHome;
+    private javax.swing.JButton addTaskViewTasksBtn;
+    private javax.swing.JButton profilePaneExitBtn;
+    private javax.swing.JButton profilePaneLogoutBtn;
+    private javax.swing.JButton profilePanegoHomeBtn;
+    private javax.swing.JButton viewTasksExitBtn;
+    private javax.swing.JButton viewTasksLogoutBtn;
+    private javax.swing.JButton viewTasksgoHomeBtn;
+    private javax.swing.JButton addTasksLogoutBtn;
+    private javax.swing.JButton addTasksExitBtn;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
@@ -438,15 +461,15 @@ public class Homepage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel homePanel;
+    private javax.swing.JPanel addTaskPanel;
+    private javax.swing.JPanel viewTasksPane;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea addTaskTextArea;
     private javax.swing.JButton logoutBtn;
-    private javax.swing.JButton markDoneBtn;
-    private javax.swing.JTabbedPane profilePanel;
+    private javax.swing.JButton viewTasksAddTaskBtn;
+    private javax.swing.JTabbedPane mainTabbedPane;
     private javax.swing.JButton saveTaskBtn;
     private javax.swing.JButton seeProfileButton;
     private javax.swing.JLabel task1Lbl;
@@ -454,5 +477,29 @@ public class Homepage extends javax.swing.JPanel {
     private javax.swing.JLabel task3Lbl;
     private javax.swing.JLabel task4Lbl;
     private javax.swing.JButton viewTasksButton;
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == logoutBtn || actionEvent.getSource() == addTasksLogoutBtn || actionEvent.getSource() == viewTasksLogoutBtn || actionEvent.getSource() == profilePaneLogoutBtn) {
+            frame.switchPanel(new Login(frame));
+        } else if (actionEvent.getSource() == exitButton || actionEvent.getSource() == addTasksExitBtn || actionEvent.getSource() == viewTasksExitBtn || actionEvent.getSource() == profilePaneExitBtn){
+            System.exit(0);
+        } else if (actionEvent.getSource() == addTaskButton) {
+            mainTabbedPane.setSelectedComponent(addTaskPanel);
+        } else if (actionEvent.getSource() == viewTasksButton) {
+            mainTabbedPane.setSelectedComponent(viewTasksPane);
+        } else if (actionEvent.getSource() == seeProfileButton) {
+            mainTabbedPane.setSelectedComponent(jPanel4);
+        } else if (actionEvent.getSource() == deltaskBtn) {
+            addTaskTextArea.setText("");
+        } else if (actionEvent.getSource() == addTaskgoHome || actionEvent.getSource() == viewTasksgoHomeBtn || actionEvent.getSource() == profilePanegoHomeBtn) {
+            mainTabbedPane.setSelectedComponent(homePanel);
+        } else if (actionEvent.getSource() == addTaskViewTasksBtn) {
+            mainTabbedPane.setSelectedComponent(viewTasksPane);
+        } else if (actionEvent.getSource() == viewTasksAddTaskBtn) {
+            mainTabbedPane.setSelectedComponent(addTaskPanel);
+        }
+
+    }
     // End of variables declaration//GEN-END:variables
 }

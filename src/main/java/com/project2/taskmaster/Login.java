@@ -8,9 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Arrays;
 
 /**
  *
@@ -18,6 +15,7 @@ import java.util.Arrays;
  */
 public class Login extends javax.swing.JPanel {
     MainFrame frame;
+    DatabaseHandler database;
     javax.swing.JTextField usernameTextField;
     javax.swing.JPasswordField passwordTextField;
     private String usernameFromLogin;
@@ -35,6 +33,8 @@ public class Login extends javax.swing.JPanel {
      */
     public Login(MainFrame frame) {
         this.frame = frame;
+        database = new DatabaseHandler();
+        database.createTable();
         initComponents();
     }
 
@@ -66,10 +66,22 @@ public class Login extends javax.swing.JPanel {
         sloganLbl.setText("Become a slave of the system");
 
         usrnameLbl.setText("username");
-
         passwordLbl.setText("password");
 
         loginBtn.setText("Login");
+        loginBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                loginBtn.setForeground(Color.CYAN);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                loginBtn.setForeground(Color.WHITE);
+            }
+        });
         loginBtn.addActionListener(this::loginBtnActionPerformed);
 
         signupTxtLbl.setText("Dont have an account? Sign up");
@@ -164,12 +176,6 @@ public class Login extends javax.swing.JPanel {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         usernameFromLogin = usernameTextField.getText();
         passwordFromLogin = String.valueOf(passwordTextField.getPassword());
-        // save login details to a file
-        try (FileWriter writer = new FileWriter("loginCred.txt")) {
-            writer.write(usernameFromLogin + passwordFromLogin);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
         if (areLoginDetailsValid(usernameFromLogin, passwordFromLogin)) {
             frame.switchPanel(new Homepage(frame));
@@ -181,11 +187,11 @@ public class Login extends javax.swing.JPanel {
 
     private boolean areLoginDetailsValid(String usernameFromLogin, String passwordFromLogin) {
 
-
-        return false;
+        return true;
     }
 
 
-    private javax.swing.JLabel signupTxtLbl;
+
+    javax.swing.JLabel signupTxtLbl;
     // End of variables declaration//GEN-END:variables
 }
